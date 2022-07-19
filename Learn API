@@ -1,0 +1,92 @@
+Http Protocol:- 
+
+Basically, HTTP is a TCP/IP based communication protocol, that is used to deliver data (HTML files, image files, query results, etc.) on the World Wide Web.
+
+HTTP Methods: 
+GET, POST,PUT,UPDATE,DELETE 
+
+HTTP Status Codes: 
+Information Responses(100 -199) : 
+100 continue:  This code indicates that the client Should continue the request or ignore it. if the request has already been completed.  
+102 processing:  This cod eindicates that the server has recevied processing the request. but no response avaliable Yet.  
+
+Succesfull Response(200 --299): 
+200 ok: This code indicates that the  request successed. The result of the success depends on HTTP Method. 
+201 Created:  This code indicates that as a result of the request Success, a new Resource has been generated.This is often delevired in the Response POST
+PUT Queries. 
+
+Redirection Responses(300 --399): 
+300 Multiple choices : This response code indicates that there are several possible responses.User will be selected to any one choice.  
+302 Found: This response code indicates that the response request URL. has been tempararly modified. in future will be change again. the client use this same URL 
+in futute queries. 
+
+Client Error response(400 --499) :
+400 Bad Request :  This Response code indicates that the client fault. server is unable to perform the requests. 
+403 Forbidden : This status code some times not using Authentication tokens. like DELETE , UPDATE etc.. 
+
+Internal server Error (500 -- ): 
+500 internal Server error : This code indicates that server has encountered. it doesn't know how to handle this situation. 
+
+502 Bad Gateway : This error response indicates that the server while acting as a gateway. obtain the answer request response. recevied the in correct response. 
+
+
+Http response body : 
+
+JSON Path
+XML
+XPATH Path
+
+
+
+Assertions:  Write sample Assetions like status codes 200 ok : 
+
+pm.test("Check the status code  200", function () {
+    pm.response.to.have.status(200);
+});
+
+Javascript Programming : 
+
+var jsonData=pm.response json( );
+var token=JsonData.token;
+pm.collectionvariables.set("token:"token);
+
+
+How to get the token  :
+var JsonData=pm.response Json( );
+var token=pm.collectionvariables.get(token);
+console.log("token:"+token); 
+
+
+To get the bookingID : 
+
+JsonData=pm.response Json( );
+var bookingId=JsonData.bookingId;
+pm.collectionvariables.set("bookingId:"bookingId);
+
+-------------------->>>>>>>>>
+
+Var JSonData=pm.response Json( );
+Var bookingId=pm.collectionvariables.get(bookingId);
+console.log("bookingId:"+bookingId);
+
+To update the data sample program where to written ?
+
+POST method Prerequest Script : 
+
+var initprice=234;
+pm.collectionvariables.set("initprice:"initprice);
+
+PUT Method Prerequest Script : 
+
+var initprice=pm.collectionvariables.get("initprice");
+var increaseprice=initprice+100;
+var presentprice=pm.collectionvariables.set("increseprice:"increaseprice);
+
+Same method to get the price: Test script Wrirtten : 
+
+var jsonData=pm.response json( );
+var presentprice=jsonData.presentprice;
+var presentprice=pm.collectionvariables.get("presentprice");
+console.log("presentprice:"+presentprice) ;
+
+
