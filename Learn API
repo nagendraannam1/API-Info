@@ -7,8 +7,8 @@ GET, POST,PUT,UPDATE,DELETE
 
 HTTP Status Codes: 
 Information Responses(100 -199) : 
-100 continue:  This code indicates that the client Should continue the request or ignore it. if the request has already been completed.  
-102 processing:  This cod eindicates that the server has recevied processing the request. but no response avaliable Yet.  
+100 continue:    This code indicates that the client Should continue the request or ignore it. if the request has already been completed.  
+102 processing:  This code indicates that the server has recevied processing the request. but no response avaliable Yet.  
 
 Succesfull Response(200 --299): 
 200 ok: This code indicates that the  request successed. The result of the success depends on HTTP Method. 
@@ -22,7 +22,7 @@ in futute queries.
 
 Client Error response(400 --499) :
 400 Bad Request :  This Response code indicates that the client fault. server is unable to perform the requests. 
-403 Forbidden : This status code some times not using Authentication tokens. like DELETE , UPDATE etc.. 
+403 Forbidden : This status code some times not using Authentication tokens. like DELETE , UPDATE , PUT etc.. 
 
 Internal server Error (500 -- ): 
 500 internal Server error : This code indicates that server has encountered. it doesn't know how to handle this situation. 
