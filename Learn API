@@ -7,22 +7,46 @@ GET, POST,PUT,UPDATE,DELETE
 
 HTTP Status Codes: 
 Information Responses(100 -199) : 
-100 continue:    This code indicates that the client Should continue the request or ignore it. if the request has already been completed.  
-102 processing:  This code indicates that the server has recevied processing the request. but no response avaliable Yet.  
+1xx:  informational response, request was received, continuing process
+100 Continue: The client can continue with the request as long as it doesn't get rejected.
+101 : Switching Protocols: The server is switching protocols.
+102  : server has received and is processing the request, but
+no response is available yet.
+
 
 Succesfull Response(200 --299): 
-200 ok: This code indicates that the  request successed. The result of the success depends on HTTP Method. 
-201 Created:  This code indicates that as a result of the request Success, a new Resource has been generated.This is often delevired in the Response POST
-PUT Queries. 
+
+2xx: Success, request was successfully received, understood, and accepted. 
+200 OK: The request succeeded
+201:    a new resource was created as a result. This is
+typically the response sent after POST requests, or some PUT requests.
+202 Accepted: Request accepted for processing, but in progres
+
+203 : Non-Authoritative Information: The information in the entity header is not from an
+original source but a third-party. 
+204: No Content: Response with status code and header but no response body
+206 Partial Content: Response with partial data as specified in Range header
+
+
 
 Redirection Responses(300 --399): 
-300 Multiple choices : This response code indicates that there are several possible responses.User will be selected to any one choice.  
-302 Found: This response code indicates that the response request URL. has been tempararly modified. in future will be change again. the client use this same URL 
-in futute queries. 
+ 
+  3xx:  Redirection,  further action needed in order to complete the request.
+  300 Multiple Choices:  Response with a list for the user to select and go to a location. 
+  301 Moved Permanently:  Requested page moved to a new url. 
+  302 Found: Requested page moved to a temporary new URL
+  
+  
 
 Client Error response(400 --499) :
-400 Bad Request :  This Response code indicates that the client fault. server is unable to perform the requests. 
-403 Forbidden : This status code some times not using Authentication tokens. like DELETE , UPDATE , PUT etc.. 
+
+4xx Client Error, request contains bad syntax or cannot be fulfilled
+400 Bad Request: Server unable to understand the request
+401 Unauthorized: Requested content needs authentication credentials
+403 Forbidden: Access is forbidden
+404 Not Found: Server is unable to find the requested page
+405 Method Not Allowed: Method in the request is not allowed. 
+
 
 Internal server Error (500 -- ): 
 500 internal Server error : This code indicates that server has encountered. it doesn't know how to handle this situation. 
