@@ -114,3 +114,55 @@ var presentprice=pm.collectionvariables.get("presentprice");
 console.log("presentprice:"+presentprice) ;
 
 
+Assertions:-  Verifying the actual value and expected values using the assertions. 
+
+Write the assrtions verifying the objects . 
+EX:-  pm.test("checking the objects equality", ( )=>{
+        let "data"={
+            "subject": "api_testing"
+            }
+         let "data2"={
+             "subject2":"postman"
+             }
+             pm.expect(data).to.be.equal(data2); 
+             
+             
+  =====>  Write the Asertions from Status codes: 
+       pm.test("status code checking",function( )=>{
+        pm.response.to.have.status(403);
+        });
+        });
+  =====>checking from multiple codes: 
+        pm.test("status code checking",function( )=>{
+          pm.expect(pm.response.code.get).to.be.oneOf([201,200]); 
+          });
+          });
+          
+   =====>Checking the header :
+           pm.test("status header checking",function( )=>{ 
+            pm.response.header.status( );
+            });
+            });
+            
+   ======> Get the header information to be equal or not 
+              pm.test("header checking",function( )=>{
+                pm.expect(pm.response.header.get(  ).to.be.equal( ); 
+                });
+                });
+                
+   ======> Checking the response time . 
+               pm.test(" checking the response time ",function( )=>{
+                  pm.expect(pm.response.responsetime(1000).to.be.above( ); 
+                  });
+                  });
+   ========> Write the Cookie assertion . 
+                 pm.test("checking the cookie assertion",function( )=>{
+                   pm.expect(pm.cookies.get(  ).to.be.equal( ); 
+                   });
+                   });
+   =========> Check if a cookie is present in the response : 
+                   pm.test(" checking cookie value ",function( )=>{
+                     pm.expect(pm.cookies.has("sessionid").to.be.true; 
+                     });
+                     });
+                     
