@@ -49,10 +49,14 @@ Client Error response(400 --499) :
 
 
 Internal server Error (500 -- ): 
-500 internal Server error : This code indicates that server has encountered. it doesn't know how to handle this situation. 
+500 internal Server error : Request not completed due to server error .
+501 request not completed: server doesn't support the functionality. 
 
 502 Bad Gateway : This error response indicates that the server while acting as a gateway. obtain the answer request response. recevied the in correct response. 
+Invalid response from upstream server to server, Hence request not completed.  
+503 Service Unavaliahe: The server is temporarily down .
 
+505 HTTP version not supported: Unsupported HTTP protocol versions. 
 
 Http response body : 
 
