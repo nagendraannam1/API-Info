@@ -227,4 +227,14 @@ pm.test("Person is Jane", () => {
 
 
 
+Log the value of a variable or response property:
+
+console.log(pm.collectionVariables.get("keyvalue"));
+console.log(pm.response.json().name);
+console.log(typeof pm.response.json().name);
+
+
+
+
+
 
