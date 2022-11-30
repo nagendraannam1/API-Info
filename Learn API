@@ -146,18 +146,18 @@ EX:-  pm.test("checking the objects equality", ( )=>{
             
    ======> Get the header information to be equal or not 
               pm.test("header checking",function( )=>{
-                pm.expect(pm.response.header.get(  ).to.be.equal( ); 
+                pm.expect(pm.response.header.get("headertype").to.be.equal("headervalue"); 
                 });
                 });
                 
    ======> Checking the response time . 
                pm.test(" checking the response time ",function( )=>{
-                  pm.expect(pm.response.responsetime(1000).to.be.above( ); 
+                  pm.expect(pm.response.responsetime()).to.be.above(1000); 
                   });
                   });
    ========> Write the Cookie assertion . 
                  pm.test("checking the cookie assertion",function( )=>{
-                   pm.expect(pm.cookies.get(  ).to.be.equal( ); 
+                   pm.expect(pm.cookies.get("keyproperty")).to.be.equal("value"); 
                    });
                    });
    =========> Check if a cookie is present in the response : 
@@ -166,3 +166,65 @@ EX:-  pm.test("checking the objects equality", ( )=>{
                      });
                      });
                      
+                       pm.test(" checking cookie content type and  value ",function( )=>{
+                     pm.expect(pm.cookies.get("keysproperty")).to.be.eql("value"); 
+                     });
+                     })
+                     
+  Asserting a response value against a variable
+Check if a response property has the same value as a variable (in this case an environment variable):
+
+pm.test("Response property matches environment variable", function () {
+  pm.expect(pm.response.json().name).to.eql(pm.environment.get("name"));
+});                   
+                     
+                     
+                                
+                     
+  Asserting a value type
+Test the type of any part of the response:
+
+
+/* response has this structure:
+{
+  "name": "Jane",
+  "age": 29,
+  "hobbies": [
+    "skating",
+    "painting"
+  ],
+  "email": null
+}
+*/
+const jsonData = pm.response.json();
+pm.test("Test data type of the response", () => {
+  pm.expect(jsonData).to.be.an("object");
+  pm.expect(jsonData.name).to.be.a("string");
+  pm.expect(jsonData.age).to.be.a("number");
+  pm.expect(jsonData.hobbies).to.be.an("array");
+  pm.expect(jsonData.website).to.be.undefined;
+  pm.expect(jsonData.email).to.be.null;
+});
+
+
+
+Testing response body
+Check for particular values in the response body:
+
+pm.test("Person is Jane", () => {
+  const responseJson = pm.response.json();
+  pm.expect(responseJson.name).to.eql("Jane");
+  pm.expect(responseJson.age).to.eql(23);
+});
+
+// Checking the array type of object. 
+
+pm.test("Person is Jane", () => {
+  const responseJson = pm.response.json();
+  pm.expect(responseJson.data[0].name).to.eql("Jane");
+  pm.expect(responseJson.data[1].age).to.eql(23);
+});
+
+
+
+
