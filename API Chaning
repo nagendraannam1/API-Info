@@ -1,0 +1,22 @@
+API Chaining mean : for Example Two API is there once sending the request server get the response automatically genearte the ID. 
+Use that ID Send the request using another method.  
+No need to hard code every time just refer the variable name.  
+refering the variables {{variablename}}
+
+const JsonData=JSON.parse(responseBody); 
+pm.enviornment.set("id",Jsondata.id); 
+
+//To create the collection Variabels 
+pm.collectionVariables("myvalue", id); 
+// TO Create the Enviornment Variables these variables same as globals variables but we need to switch the enviornment.  
+pm.enviornment.set("myvalue",id); 
+//To Create the global variables 
+pm.globals.set("myvalue",id); 
+
+Above all variables to delete it is possible to use below code .  
+
+pm.collectionVariables.unset("myvalue"); 
+pm.enviornment.unset("myvalue");
+pm.globals.unset("myvalue");
+
+
