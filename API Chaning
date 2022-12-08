@@ -1,6 +1,15 @@
 API Chaining mean : for Example Two API is there once sending the request server get the response automatically genearte the ID. 
 Use that ID Send the request using another method.  
 No need to hard code every time just refer the variable name.  
+
+jsonbody:
+{
+"name":"nagendra",
+"email":"nagendra@gmail.com",
+"status":"inactive"
+}
+
+
 refering the variables {{variablename}}
 
 const JsonData=JSON.parse(responseBody); 
@@ -18,5 +27,29 @@ Above all variables to delete it is possible to use below code .
 pm.collectionVariables.unset("myvalue"); 
 pm.enviornment.unset("myvalue");
 pm.globals.unset("myvalue");
+
+
+Generete the random string 
+
+var random=math.random( ).toString(24).substring(3);
+var username="naga"+random+"@gmail.com"; 
+var username="naga"+random; 
+
+pm.enviornment.set("randomail",usermail);
+pm.enviornment.set("randomname",username); 
+
+Above environment variables is using with JSON Body.  
+
+{
+"name":"{{randomname}}",
+"email":"{{randomail}}",
+"status":"inactive"
+}
+
+pm.tets("validate body", function( ) { 
+   var jsonData=pm.response.json( ); 
+   pm.expect(jsonData.id).to.equal(pm.enviornment.get("randomname");
+});
+
 
 
