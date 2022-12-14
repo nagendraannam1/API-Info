@@ -32,7 +32,7 @@ pm.globals.unset("myvalue");
 Generete the random string 
 
 var random=math.random( ).toString(24).substring(3);
-var username="naga"+random+"@gmail.com"; 
+var usermail="naga"+random+"@gmail.com"; 
 var username="naga"+random; 
 
 pm.enviornment.set("randomail",usermail);
@@ -50,6 +50,11 @@ pm.tets("validate body", function( ) {
    var jsonData=pm.response.json( ); 
    pm.expect(jsonData.id).to.equal(pm.enviornment.get("randomname");
 });
+
+//DataDriven Testing 
+First of all we maintain the data in ONE CSV File format. must be That data in Database.  
+Select the file in post man tool .  
+Giving the Vlaues to How many times to run the requests.  
 
 
 
