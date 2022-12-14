@@ -1,0 +1,23 @@
+
+pm.test["Array contains element"], function(){
+	pm.expect(['Java', 'Postman']).to.be.an('array').that.is.not .empty
+})
+
+//Lets Creating the objects with an Validating the postMan assertions. 
+
+pm.test("Validating the two objects with Post man assertions", ( )=>{ 
+   let obj1={
+     "Client1":"Nagendra Annam",
+     "Client2":"Rajendra Prasad"
+     } 
+   let obj2={
+     "Client3":"Sai Srijan",
+     "Client4":"Tanvi Reddy"
+     }
+     pm.expect(obj1).to.eql(obj2); 
+     }); 
+     
+     
+     
+   
+     
