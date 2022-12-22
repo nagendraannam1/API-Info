@@ -1,0 +1,112 @@
+
+//Generate the random Strings and Random Numbers. 
+const randomnum=Math.floor((Math.random)*100+1)); 
+pm.enviornment.set("id",random); 
+
+// Randomly strings generate Update the response body.  
+
+const randomStrings="AnnamNagendra"+Math.random().toString(36).substring(2); 
+//Create Collection variables .  
+
+pm.collectionVariables.set("firstName", randomStrings); 
+pm.collectionVariables.set("lastName", randomStrings); 
+pm.collectionVariables.set("email", randomStrings+"@gmail.com"); 
+pm.collectionVariables.set("phone", 8367735165) ; 
+
+//Above collection Variables using from in request body . 
+//How we use it that variable 
+{{variableName}}, Same as using request URL level. also  
+
+// If we have to remove the collecton Variables and globals,local,enviornment using below method.  
+
+pm.collectionVariable.unset("lastName"); 
+pm.enviornment.unset("email"); 
+pm.globals.unset("phone"); 
+
+//How to Validate the Random entire  Object .  
+
+pm.test("validating the objectLevel of jsonData", ( )=> {
+  const expectedObject= {
+      "firstName":"{{firstName}}, 
+      "lastName":"{{lastName}}},
+      "email":"{{email}}, 
+      "phone":"{{phone}}
+      }
+      pm.expect(pm.response.json( )).to.deep.equal(expectedObject); 
+      pm.expect(pm.response.json( )).to.deep.include(expectedObject); 
+
+      });
+      
+      
+// Test the type any part of the response in jsonBody. 
+
+const jsonData=pm.response.json();
+pm.test("Validating the type of responsebody" ,  ()=> {
+  pm.expect(jsonData).to.be.an("object") ;
+  pm.expect(jsonData.name).to.be.a("string") ;
+  pm.expect(jsonData.number).to.be.a("number") ;
+  pm.expect(jsonData.arrayType).to.be.an("array") ;
+  pm.expect(jsonData.email).to.be.null ;
+  pm.expect(jsonData.undefined).to.be.undefined ;
+  
+  }); 
+  
+  //Asserting the response value aganist a enviorment variable .  
+  
+  pm.test("using responseJson and enviornment variable", ( ) => {
+       pm.expect(pm.response.json( ).propertyName).to.eql(pm.enviornment.get("propertyValue") ;
+   }); 
+   
+//Asserting the current Enviornment.  
+
+Check the active currently selected enviornment in postman.  
+Syntax:
+pm.test("Checking currently active enviornment variable", ( ) =>{ 
+pm.expect(pm.enviornment.get(propertyName))to.eql("Propertyvalue") ; 
+})
+
+
+//Printing the logs the value of a variable in response property. 
+console.log(pm.collectionVariables.get("Value")); 
+
+//Logs the type of a variable in response property .  
+console.log(typeof pm.response.json( ).name)); 
+
+// Checking Test fails or not using the boolean expressions
+
+pm.test("Checking the test fail", ( )=>{ 
+  pm.expect(true).to.eql(false); 
+  }); 
+  
+  //Checking the cookies assertions .  
+  
+  pm.test("Writing the cookies assertion", ( )=> { 
+    pm.expect(pm.cookies.has("sessionid")).to.be.true; 
+    }) ; 
+   //Checking the cookies assertions and values 
+   
+   pm.test("Writing the Cookies assertion with value", ( )=> { 
+      pm.expect(pm.cookies.get("sessionid")).to.eql("cookieValue"); 
+      }); 
+      
+     //Checking the response Time. 
+     
+     pm.test("responseTime", ( )=> {
+       pm.expect(pm.response.responsTime).to.be.below(2000);
+       }) ; 
+       
+       //Checkign the respons multiple codes.  
+       
+       pm.test("Checking the multiple status codes", ( )=>{ 
+          pm.expect(pm.response.code).to.be.oneof([201,200,204]); 
+          }); 
+          
+     //Checking the multiple values .  
+     
+     pm.test("Checking the values from multiple", () => { 
+        pm.expect(pm.response.json( )).to.be.oneof(["nagendra","rajendra","Saisrijan"]); 
+        }); 
+        
+        
+      
+      
