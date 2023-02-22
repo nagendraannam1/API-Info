@@ -34,7 +34,9 @@ pm.test("validating the objectLevel of jsonData", ( )=> {
       }
       pm.expect(pm.response.json( )).to.deep.equal(expectedObject); 
       pm.expect(pm.response.json( )).to.deep.include(expectedObject); 
-
+      // Using the iterative Method 
+      
+      pm.expect(pm.response.json( )).pm.iterativeData(expectedObjcet);  
       });
       
       
