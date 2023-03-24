@@ -19,5 +19,14 @@ pm.test("Validating the two objects with Post man assertions", ( )=>{
      
      
      
+  Sending the Next Request:   
+  
+In the Collection Runner, you have the option to change the order of the requests before starting a run. However, instead of manually changing the request order each time you run the collection, you can automate this behavior using the postman.setNextRequest() function. 
+
+In the pre-request script method using to generate automatically to next request. 
+
+postman.setNextRequest("request_name");  
+
+
    
      
